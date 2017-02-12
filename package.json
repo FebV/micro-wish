@@ -1,0 +1,20 @@
+{
+  "name": "micro-wish",
+  "version": "0.0.1",
+  "description": "rewrite that stupid wishYUESD front end",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack-dev-server"
+  },
+  "author": "FebV",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0",
+    "webpack-devserver": "0.0.6"
+  }
+}
