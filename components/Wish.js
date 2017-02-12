@@ -12,6 +12,9 @@ export default class Wish extends React.Component {
             margin: '30px',
             opacity: 0.9,
         }
+        this.state = {
+            wish_id: this.props.wish_id,
+        }
     }
 
     render() {
@@ -19,11 +22,11 @@ export default class Wish extends React.Component {
             <MuiThemeProvider>
             <Card style={this.style}>
                 <CardHeader
-                    title="韩楚怡"
-                    subtitle="80岁"
+                    title={`${this.props.wish_user_name} ${this.props.wish_user_gender}`}
+                    subtitle={`发布时间 ${this.props.wish_pub_date}   截止时间 ${this.props.wish_deadline}`}
                 />
                 <CardText style={{fontSize: '3vh'}}>
-                    我的心愿就是，牙不要再疼了，真的真的，不要再疼了，谁来帮帮我呢
+                    {this.props.detail}
                 </CardText>
                 <CardActions>
                     <RaisedButton  label="接受心愿" primary={true} />
