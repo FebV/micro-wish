@@ -11,8 +11,10 @@
   "author": "FebV",
   "license": "ISC",
   "dependencies": {
+    "material-ui": "^0.16.7",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-tap-event-plugin": "^2.0.1",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0",
     "webpack-devserver": "0.0.6"

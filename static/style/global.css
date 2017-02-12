@@ -1,0 +1,20 @@
+@font-face {
+    font-family: Roboto;
+    src: url(/static/fonts/Roboto-Light.ttf);
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Microsoft Yahei';
+    width: 100%;
+}
+body {
+    background-image: url(/static/img/background.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 100% -15px;
+    
+}
+#root {
+    width: 100%;
+}
