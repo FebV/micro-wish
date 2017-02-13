@@ -5,6 +5,8 @@ import Dialog from 'material-ui/Dialog';
 import Checkbox from 'material-ui/Checkbox';
 import DatePicker from 'material-ui/DatePicker';
 import TextField from 'material-ui/TextField'
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+
 const baseUrl = 'http://wesdu.com';
 
 // const url = (obj) => {
@@ -34,7 +36,8 @@ export default class Title extends React.Component{
             zIndex: '1',
         };
         this.state = {
-            publishOpen: false
+            publishOpen: false,
+            myWishOpen: false,
         };
 
     }
@@ -47,6 +50,16 @@ export default class Title extends React.Component{
         this.setState({publishOpen: false});
     }
 
+    handleMyWishOpen() {
+        this.setState({myWishOpen: true});
+        console.log('open');
+    }
+
+    handleMyWishClose() {
+        this.setState({myWishOpen: false});
+    }
+
+
     render() {
         return (
             <div style={this.style} >
@@ -56,12 +69,12 @@ export default class Title extends React.Component{
                 <span style={{display:'flex'}}>
                     <PublishButton handleOpen={this.handlePublishOpen.bind(this)} />
                     <span>&nbsp;</span>
-                    <MyWishButton />
+                    <MyWishButton handleOpen={this.handleMyWishOpen.bind(this)} />
                 </span>
 
 
                 <PublishWish open={this.state.publishOpen} handleClose={this.handlePublishClose.bind(this)} />
-                
+                <MyWish open={this.state.myWishOpen} handleClose={this.handleMyWishClose.bind(this)} />
             </div>
         );
     }
@@ -84,7 +97,7 @@ class MyWishButton extends React.Component {
     }
     render() {
         return (
-            <MuiThemeProvider><RaisedButton primary={true} label="我的心愿"/></MuiThemeProvider>
+            <MuiThemeProvider><RaisedButton onClick={this.props.handleOpen} primary={true} label="我的心愿"/></MuiThemeProvider>
         );
     }
 } 
@@ -190,40 +203,42 @@ class PublishWish extends React.Component {
 class MyWish extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            myPub: ['q', 'w']
+        }
+        fetch(baseUrl+'/wish/myPub')
+            .then(res => res.json())
+            .then(res => {
+                if(Array.isArray(res)) {
+                    this.setState({myPub: res});
+                    console.log(res);
+                }
+            });
     }
 
     render() {
+
+        const wishes = this.state.myPub.map((ele, idx) => {
+            console.log(idx);
+            return (
+                <Card key={idx} >
+                    <CardHeader
+                    title={'qqq'}
+                    />
+                </Card>
+            )
+        });
+
         return (
         <MuiThemeProvider>
         <Dialog
-            title="发布心愿"
+            title="我的心愿"
             actions={this.action}
-            open={false}
+            open={this.props.open}
             modal={false}
             onRequestClose={this.props.handleClose}
         >
-            <DatePicker
-                defaultDate={this.state.currentTime}
-                floatingLabelText="截止日期"
-                onChange={this.handleDDL.bind(this)}
-            /><br />
-            <TextField
-                onChange={this.handleTel.bind(this)}
-                hintText="联系电话"
-                floatingLabelText="联系电话"
-            /><br />
-            <TextField
-                hintText="心愿详情"
-                floatingLabelText="心愿详情"
-                multiLine={true}
-                rows={2}
-                fullWidth={true}
-                onChange={this.handleDetail.bind(this)}
-            /><br /><br />
-            <Checkbox
-                label="你要匿名发布吗"
-                onCheck={this.handleCheck.bind(this)}
-            />
+            {wishes}
         </Dialog>
         </MuiThemeProvider>
         );
