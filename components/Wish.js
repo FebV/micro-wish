@@ -17,6 +17,7 @@ export default class Wish extends React.Component {
         }
     }
 
+
     render() {
         return (
             <MuiThemeProvider>
@@ -29,7 +30,7 @@ export default class Wish extends React.Component {
                     {this.props.detail}
                 </CardText>
                 <CardActions>
-                    <RaisedButton  label="接受心愿" primary={true} />
+                    <RaisedButton  label="接受心愿" onClick={() => this.props.handleAccept(this.state.wish_id)} primary={true} />
                 </CardActions>
             </Card>
             </MuiThemeProvider>

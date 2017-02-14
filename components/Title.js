@@ -204,7 +204,8 @@ class MyWish extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            myPub: ['q', 'w']
+            myPub: [],
+            myAccept: [],
         }
         fetch(baseUrl+'/wish/myPub')
             .then(res => res.json())
@@ -216,17 +217,56 @@ class MyWish extends React.Component {
             });
     }
 
+    handleDelete(id) {
+        fetch(`${baseUrl}/wish/delete`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: encodeURIComponent(`wish_id=${id}`),
+        })
+            .then(res => res.text())
+            .then(res => {alert(res)});
+    }
+
     render() {
 
-        const wishes = this.state.myPub.map((ele, idx) => {
+        const pubWishes = this.state.myPub.map((ele, idx) => {
             console.log(idx);
             return (
-                <Card key={idx} >
+                <div>
+                    我发布的
+                <Card key={ele.wish_id} >
                     <CardHeader
-                    title={'qqq'}
+                    title={`心愿状态 ${ele.wish_statue}  ${ele.wish_pub_date}-${ele.wish_deadline}`}
+                    subtitle={`${ele.wish_accept_user_name} ${ele.wish_accept_date} ${ele.wish_accept_tel}`}
                     />
+                    <CardText style={{fontSize: '3vh'}}>
+                    {ele.wish_detail}
+                    </CardText>
+                    <RaisedButton onClick={this.handleDelete.apply(this, ele.wish_id)} primary={true} label="删除心愿"/>
                 </Card>
-            )
+                <br />
+                </div>
+            );
+        });
+
+        const acceptWishes = this.state.myAccept.map(ele => {
+            return (
+                <div>
+                    我接受的
+                <Card key={ele.wish_id} >
+                    <CardHeader
+                    title={`${ele.wish_pub_date}-${ele.wish_deadline}`}
+                    subtitle={`${ele.wish_accept_user_name} ${ele.wish_user_gender} ${ele.wish_accept_date} ${ele.wish_accept_tel}`}
+                    />
+                    <CardText style={{fontSize: '3vh'}}>
+                    {ele.wish_detail}
+                    </CardText>
+                </Card>
+                <br />
+                </div>
+            );
         });
 
         return (
@@ -238,7 +278,7 @@ class MyWish extends React.Component {
             modal={false}
             onRequestClose={this.props.handleClose}
         >
-            {wishes}
+            {pubWishes}
         </Dialog>
         </MuiThemeProvider>
         );
