@@ -5,9 +5,9 @@ import Dialog from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField'
 import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
+import {baseUrl} from '../config/config';
 
 
-const baseUrl = 'http://wesdu.com';
 
 export default class WishLish extends React.Component {
     constructor(props) {
