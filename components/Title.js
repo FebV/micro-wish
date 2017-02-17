@@ -22,7 +22,7 @@ import MyWish from './MyWish';
 export default class Title extends React.Component{
     constructor(props) {
         super(props);
-        this.logoUrl = '/static/img/index.png';
+        this.logoUrl = 'static/img/index.png';
         this.titleText = '心愿单';
         this.style = {
             height:'10%',
