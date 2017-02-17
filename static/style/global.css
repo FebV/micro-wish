@@ -1,6 +1,6 @@
 @font-face {
     font-family: Roboto;
-    src: url(static/fonts/Roboto-Light.ttf);
+    src: url(../fonts/Roboto-Light.ttf);
 }
 html, body {
     margin: 0;
@@ -9,7 +9,7 @@ html, body {
     width: 100%;
 }
 body {
-    background-image: url(static/img/background.png);
+    background-image: url(../img/background.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 100% -15px;
