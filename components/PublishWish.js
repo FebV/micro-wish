@@ -5,6 +5,7 @@ import Dialog from 'material-ui/Dialog';
 import DatePicker from 'material-ui/DatePicker';
 import TextField from 'material-ui/TextField';
 import Checkbox from 'material-ui/Checkbox';
+import {baseUrl} from '../config/config';
 
 export default class PublishWish extends React.Component {
     constructor(props) {
