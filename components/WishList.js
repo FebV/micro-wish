@@ -21,7 +21,7 @@ export default class WishLish extends React.Component {
     }
 
     getWishList() {
-        fetch(baseUrl+'/wish/list?head=1&rows=10', {
+        fetch(baseUrl+'/wish/list?head=0&rows=10', {
             credentials: 'include'
         })
             .then(res => res.json())
