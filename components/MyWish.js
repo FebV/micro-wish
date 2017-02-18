@@ -12,7 +12,7 @@ export default class MyWish extends React.Component {
             myPub: [],
             myAccept: [],
         }
-        fetch(baseUrl+'/user/wish_pub?head=1&rows=10', {
+        fetch(baseUrl+'/user/wish_pub?head=0&rows=10', {
             credentials: 'include',
         })
             .then(res => res.json())
