@@ -21,17 +21,21 @@ export default class WishLish extends React.Component {
     }
 
     getWishList() {
-        fetch(baseUrl+'/wish/list?head=0&rows=10')
+        fetch(baseUrl+'/wish/list?head=0&rows=10', {
+            credentials: 'include'
+        })
             .then(res => res.json())
             .then(res => {
-                this.setState({wishList: res.map(ele => <Wish
-                    wish_id={ele.wish_id}
-                    wish_detail={ele.wish_detail}
-                    wish_user_name={ele.wish_user_name}
-                    wish_pub_date={ele.wish_pub_date}
-                    wish_deadline={ele.wish_deadline}
-                    wish_user_gender={ele.wish_user_gender}
-                />)});
+                if  (Array.isArray(res)) {
+                    this.setState({wishList: res.map(ele => <Wish
+                        wish_id={ele.wish_id}
+                        wish_detail={ele.wish_detail}
+                        wish_user_name={ele.wish_user_name}
+                        wish_pub_date={ele.wish_pub_date}
+                        wish_deadline={ele.wish_deadline}
+                        wish_user_gender={ele.wish_user_gender}
+                    />)});
+                }
             });
     }
 

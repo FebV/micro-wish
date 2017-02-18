@@ -60,7 +60,8 @@ export default class PublishWish extends React.Component {
         fetch(baseUrl+'/wish/submit', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'credentials': 'include',
             },
             body: searchParams,
         })

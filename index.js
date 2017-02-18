@@ -7,7 +7,6 @@ import {baseUrl} from './config/config';
 injectTapEventPlugin();
 
 
-
 ReactDOM.render(
     <div>
         <Title></Title>
