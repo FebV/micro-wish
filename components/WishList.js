@@ -21,7 +21,7 @@ export default class WishLish extends React.Component {
     }
 
     getWishList() {
-        fetch(baseUrl+'/wish/list')
+        fetch(baseUrl+'/wish/list?head=0&rows=10')
             .then(res => res.json())
             .then(res => {
                 this.setState({wishList: res.map(ele => <Wish
