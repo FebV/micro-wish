@@ -22,7 +22,7 @@ import MyWish from './MyWish';
 export default class Title extends React.Component{
     constructor(props) {
         super(props);
-        this.logoUrl = 'static/img/index.png';
+        this.logoUrl = 'dist/static/img/index.png';
         this.titleText = '心愿单';
         this.style = {
             height:'10%',
@@ -81,7 +81,7 @@ export default class Title extends React.Component{
     }
 }
 
-let IndexLogo = () => <img height="60%" src="/static/img/index.png" />;
+let IndexLogo = () => <img height="60%" src="./static/img/index.png" />;
 class PublishButton extends React.Component {
     constructor(props) {
         super(props);
