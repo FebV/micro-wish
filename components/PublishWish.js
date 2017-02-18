@@ -61,8 +61,8 @@ export default class PublishWish extends React.Component {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-                credentials: 'include',
             },
+            credentials: 'include',
             body: searchParams,
         })
         console.log(this.state);
