@@ -14,7 +14,7 @@ ReactDOM.render(
     </div>,
 document.getElementById('root'));
 
-let msgPush = new WebSocket('ws://www.yuesdu.com/message/messagePush');
-msgPush.onmessage = msge => {
-    console.log(msge.data);
-}
+// let msgPush = new WebSocket('ws://www.yuesdu.com/message/messagePush');
+// msgPush.onmessage = msge => {
+//     console.log(msge.data);
+// }
