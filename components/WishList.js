@@ -77,11 +77,10 @@ class AcceptDialog extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log('dialog get wish id = '+this.props.wishId);
         this.state = {
             accepter_tel: null,
             accept_user_show: 1,
-            wish_id: this.props.wishId,
+            wish_id: null,
         }
     }
 
@@ -95,6 +94,7 @@ class AcceptDialog extends React.Component {
     }
 
     handleAccept() {
+        this.setState({wish_id: this.props.wishId});
         const params = this.state;
         const searchParams = Object.keys(params).map((key) => {
             return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
