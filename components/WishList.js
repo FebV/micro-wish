@@ -51,6 +51,7 @@ export default class WishLish extends React.Component {
     }
 
     handleAccept(id) {
+        console.log(`callback id = ${id}`);
         this.setState({dialogOpen: true, acceptWishId: id});
 
     }

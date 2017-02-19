@@ -30,7 +30,12 @@ export default class Wish extends React.Component {
                     {this.props.wish_detail}
                 </CardText>
                 <CardActions>
-                    <RaisedButton  label="接受心愿" onClick={() => this.props.handleAccept(this.props.wish_id)} primary={true} />
+                    <RaisedButton  label="接受心愿" 
+                        onClick={() => {
+                            console.log(`get props id = ${this.props.wish_id}`);
+                            this.props.handleAccept(this.props.wish_id)
+                        }} 
+                        primary={true} />
                 </CardActions>
             </Card>
             </MuiThemeProvider>
