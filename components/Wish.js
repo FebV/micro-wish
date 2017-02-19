@@ -27,7 +27,7 @@ export default class Wish extends React.Component {
                     subtitle={`发布时间 ${this.props.wish_pub_date}   截止时间 ${this.props.wish_deadline}`}
                 />
                 <CardText style={{fontSize: '3vh'}}>
-                    {this.props.detail}
+                    {this.props.wish_detail}
                 </CardText>
                 <CardActions>
                     <RaisedButton  label="接受心愿" onClick={() => this.props.handleAccept(this.state.wish_id)} primary={true} />
