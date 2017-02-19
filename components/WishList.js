@@ -36,6 +36,7 @@ export default class WishLish extends React.Component {
                         wish_pub_date={ele.wish_pub_date}
                         wish_deadline={ele.wish_deadline}
                         wish_user_gender={ele.wish_user_gender}
+                        handleAccept={this.handleAccept.bind(this)}
                     />)});
                 }
             });
