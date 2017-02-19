@@ -32,7 +32,6 @@ export default class Wish extends React.Component {
                 <CardActions>
                     <RaisedButton  label="接受心愿" 
                         onClick={() => {
-                            console.log(`get props id = ${this.props.wish_id}`);
                             this.props.handleAccept(this.props.wish_id)
                         }} 
                         primary={true} />

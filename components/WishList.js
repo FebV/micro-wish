@@ -77,6 +77,7 @@ class AcceptDialog extends React.Component {
 
     constructor(props) {
         super(props);
+        console.log('dialog get wish id = '+this.props.wishId);
         this.state = {
             accepter_tel: null,
             accept_user_show: 1,
