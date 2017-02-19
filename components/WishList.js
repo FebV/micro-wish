@@ -26,7 +26,8 @@ export default class WishLish extends React.Component {
         })
             .then(res => res.json())
             .then(res => {
-                if  (Array.isArray(res)) {
+                if  (res.status == 200) {
+                    res = res.data;
                     this.setState({wishList: res.map(ele => <Wish
                         wish_id={ele.wish_id}
                         wish_detail={ele.wish_detail}
