@@ -93,8 +93,8 @@ class AcceptDialog extends React.Component {
         this.setState({accept_user_show: val});
     }
 
-    handleAccept() {
-        this.setState({wish_id: this.props.wishId});
+    handleAccept(id) {
+        console.log(`dialog get id = ${id}`);
         const params = this.state;
         const searchParams = Object.keys(params).map((key) => {
             return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
@@ -132,7 +132,9 @@ class AcceptDialog extends React.Component {
                 label="你要匿名接受吗"
                 onCheck={this.handleCheck.bind(this)}
             /><br /><br />
-            <RaisedButton  label="接受心愿" onClick={this.handleAccept.bind(this)} primary={true} />
+            <RaisedButton  label="接受心愿" onClick={() => {
+                this.handleAccept(this.props.wishId);
+                }} primary={true} />
 
         </Dialog>
         </MuiThemeProvider>
