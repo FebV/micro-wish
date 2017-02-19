@@ -104,6 +104,7 @@ class AcceptDialog extends React.Component {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
+            credentials: 'include',
             body: searchParams,
         })
             .then(res => res.text())
