@@ -130,7 +130,7 @@ class AcceptDialog extends React.Component {
                 label="你要匿名接受吗"
                 onCheck={this.handleCheck.bind(this)}
             />
-            <RaisedButton  label="接受心愿" onClick={this.props.handleAccept.bind(this)} primary={true} />
+            <RaisedButton  label="接受心愿" onClick={this.handleAccept.bind(this)} primary={true} />
 
         </Dialog>
         </MuiThemeProvider>
