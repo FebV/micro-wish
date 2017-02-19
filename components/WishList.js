@@ -16,16 +16,28 @@ export default class WishLish extends React.Component {
             wishList: [],
             dialogOpen: false,
             acceptWishId: null,
+            page: 1,
         }
-        this.getWishList();
+        this.getWishList(this.state.page);
+        window.onscroll = () => {
+            if(document.body.scrollHeight - document.body.clientHeight - document.body.scrollTop < 10) {
+                console.log('bottom');
+                getWishList(page+1);
+                this.setState({page: page + 1});
+            }
+        }
     }
 
-    getWishList() {
-        fetch(baseUrl+'/wish/list?head=0&rows=10', {
+    getWishList(page) {
+        head = 0 + 10 * page;
+        rows = head + 10;
+        fetch(baseUrl+`/wish/list?head=${head}&rows=${rows}`, {
+        // fetch(baseUrl+'/mock/list.json', {
             credentials: 'include'
         })
             .then(res => res.json())
             .then(res => {
+                console.log(`in callback -> page: ${page}  head:${head}  rows:${rows}`);
                 if  (res.status == 200) {
                     res = res.data;
                     this.setState({wishList: res.map(ele => <Wish
