@@ -36,7 +36,7 @@ export default class WishLish extends React.Component {
                         wish_pub_date={ele.wish_pub_date}
                         wish_deadline={ele.wish_deadline}
                         wish_user_gender={ele.wish_user_gender}
-                        handleAccept={this.handleAccept.bind(this)}
+                        handleAccept={this.handleAccept.apply(this, ele.wish_id)}
                     />)});
                 }
             });
@@ -78,7 +78,7 @@ class AcceptDialog extends React.Component {
         super(props);
         this.state = {
             accepter_tel: null,
-            accept_user_show: 0,
+            accept_user_show: 1,
             wish_id: this.props.wishId,
         }
     }
@@ -88,7 +88,7 @@ class AcceptDialog extends React.Component {
     }
 
     handleCheck(e, val) {
-        val = val == true ? 0 : 1;
+        val = val === true ? 0 : 1;
         this.setState({accept_user_show: val});
     }
 
@@ -97,7 +97,7 @@ class AcceptDialog extends React.Component {
         const searchParams = Object.keys(params).map((key) => {
             return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
         }).join('&');
-        fetch('wish/accept', {
+        fetch('/wish/accept', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -125,11 +125,11 @@ class AcceptDialog extends React.Component {
                 onChange={this.handleTel.bind(this)}
                 hintText="联系电话"
                 floatingLabelText="联系电话"
-            /><br />
+            /><br /><br />
             <Checkbox
                 label="你要匿名接受吗"
                 onCheck={this.handleCheck.bind(this)}
-            />
+            /><br /><br />
             <RaisedButton  label="接受心愿" onClick={this.handleAccept.bind(this)} primary={true} />
 
         </Dialog>
