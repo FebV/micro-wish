@@ -12,10 +12,13 @@ export default class Wish extends React.Component {
             margin: '30px',
             opacity: 0.9,
         }
-        this.props.handleAccept(this.props.wish_id);
         this.state = {
             wish_id: this.props.wish_id,
         }
+    }
+
+    componentWillMount() {
+        this.props.handleAccept(this.props.wish_id);
     }
 
 
