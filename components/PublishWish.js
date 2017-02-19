@@ -19,7 +19,7 @@ export default class PublishWish extends React.Component {
         ];
         this.state = {
             wish_detail: '',
-            wish_user_show: '',
+            wish_user_show: 1,
             wish_deadline: new Date(),
             wish_user_tel: '',
             if_tel_change: 1,
