@@ -14,23 +14,7 @@ ReactDOM.render(
     </div>,
 document.getElementById('root'));
 
-setInterval(() => {
-    fetch(baseUrl + '/message/messagePush')
-        .then(res => res.json())
-        .then(res => {
-            if(Array.isArray(res)) {
-                console.log(res);
-                // res.map(ele => {
-                //     fetch(baseUrl + '/message/messagePush', {
-                //         method: 'POST',
-                //         headers: {
-                //             'Content-Type': 'application/x-www-form-urlencoded'
-                //         },
-                //         body: `message_id=${ele.message_id}`
-                //     })
-                //         .then(res => res.text())
-                //         .then(res => {alert(res)});
-                // });
-            }
-        })
-}, 10000)
+let msgPush = new WebSocket('ws://www.yuesdu.com/message/messagePush');
+msgPush.onmessage = msge => {
+    console.log(msge.data);
+}
