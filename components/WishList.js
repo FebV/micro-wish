@@ -29,8 +29,8 @@ export default class WishLish extends React.Component {
     }
 
     getWishList(page) {
-        head = 0 + 10 * page;
-        rows = head + 10;
+        let head = 0 + 10 * page;
+        let rows = head + 10;
         fetch(baseUrl+`/wish/list?head=${head}&rows=${rows}`, {
         // fetch(baseUrl+'/mock/list.json', {
             credentials: 'include'
@@ -40,7 +40,7 @@ export default class WishLish extends React.Component {
                 console.log(`in callback -> page: ${page}  head:${head}  rows:${rows}`);
                 if  (res.status == 200) {
                     res = res.data;
-                    this.setState({wishList: res.map(ele => <Wish
+                    this.setState({wishList: wishList.concat(res.map(ele => <Wish
                         key={ele.wish_id}
                         wish_id={ele.wish_id}
                         wish_detail={ele.wish_detail}
@@ -49,7 +49,7 @@ export default class WishLish extends React.Component {
                         wish_deadline={ele.wish_deadline}
                         wish_user_gender={ele.wish_user_gender}
                         handleAccept={this.handleAccept.bind(this)}
-                    />)});
+                    />))});
                 }
             });
     }
