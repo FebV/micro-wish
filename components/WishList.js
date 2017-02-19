@@ -94,7 +94,7 @@ class AcceptDialog extends React.Component {
     }
 
     handleAccept(id) {
-        console.log(`dialog get id = ${id}`);
+        this.state.wish_id = id;
         const params = this.state;
         const searchParams = Object.keys(params).map((key) => {
             return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
@@ -114,6 +114,7 @@ class AcceptDialog extends React.Component {
     }
 
     render() {
+        console.log(this.props);
         return (
         <MuiThemeProvider>
         <Dialog
