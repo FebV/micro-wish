@@ -81,6 +81,7 @@ class AcceptDialog extends React.Component {
             accepter_tel: null,
             accept_user_show: 1,
             wish_id: null,
+            if_tel_change: 1,
         }
     }
 
