@@ -39,7 +39,7 @@ export default class MyWish extends React.Component {
 
     render() {
 
-        const pubWishes = this.state.myPub.map((ele, idx) => {
+        let pubWishes = this.state.myPub.map((ele, idx) => {
             console.log(idx);
             return (
                 <div key={ele.wish_id}>
@@ -61,7 +61,7 @@ export default class MyWish extends React.Component {
         });
         pubWishes = <div>我发布的<br />{pubWishes}</div>;
 
-        const acceptWishes = this.state.myAccept.map(ele => {
+        let acceptWishes = this.state.myAccept.map(ele => {
             return (
                 <div key={ele.wish_id}>
                 <Card key={ele.wish_id} >
