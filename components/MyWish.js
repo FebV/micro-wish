@@ -13,7 +13,8 @@ export default class MyWish extends React.Component {
             myPub: [],
             myAccept: [],
         }
-        fetch(baseUrl+'/user/wish_pub?head=0&rows=10', {
+        // fetch(baseUrl+'/user/wish_pub?head=0&rows=100', {
+        fetch(baseUrl+'/mock/mypub.json', {
             credentials: 'include',
         })
             .then(res => res.json())
@@ -22,7 +23,7 @@ export default class MyWish extends React.Component {
                     this.setState({myPub: res.data});
                 }
             });
-        fetch(baseUrl+'/user/wish_accept?head=0&rows=10', {
+        fetch(baseUrl+'/user/wish_accept?head=0&rows=100', {
             credentials: 'include',
         })
             .then(res => res.json())
@@ -50,12 +51,15 @@ export default class MyWish extends React.Component {
 
         let pubWishes = this.state.myPub.map((ele, idx) => {
             console.log(idx);
+            const subtitle = ele.wish_status == 1 ? `接收者${ele.wish_accept_user_name} ${ele.wish_accept_date} ${ele.wish_accept_tel}` : '';
             return (
                 <div key={ele.wish_id}>
                 <Card key={ele.wish_id} >
                     <CardHeader
-                    title={`心愿状态 ${ele.wish_statue}  ${ele.wish_pub_date}-${ele.wish_deadline}`}
-                    subtitle={`${ele.wish_accept_user_name} ${ele.wish_accept_date} ${ele.wish_accept_tel}`}
+                    //title={`心愿状态 ${ele.wish_status == 0 ? '暂未接受' : '已经接受' }  ${ele.wish_pub_date} ~ ${ele.wish_deadline}`}
+                    title={`心愿状态 : ${ele.wish_status == 0 ? '暂未接受' : '已经接受' } `}
+                    subtitle={subtitle}
+                    children={`${ele.wish_pub_date} ~ ${ele.wish_deadline}`}
                     />
                     <CardText style={{fontSize: '3vh'}}>
                     {ele.wish_detail}
@@ -68,7 +72,7 @@ export default class MyWish extends React.Component {
                 </div>
             );
         });
-        pubWishes = <div>我发布的<br />{pubWishes}</div>;
+        pubWishes = <div><br />我发布的<br /><br />{pubWishes}</div>;
 
         let acceptWishes = this.state.myAccept.map(ele => {
             return (
@@ -87,7 +91,7 @@ export default class MyWish extends React.Component {
             );
         });
 
-        acceptWishes = <div>我接受的<br />{acceptWishes}</div>;
+        acceptWishes = <div><br />我接受的<br /><br />{acceptWishes}</div>;
 
 
         return (
