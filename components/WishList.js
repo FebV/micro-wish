@@ -22,7 +22,7 @@ export default class WishLish extends React.Component {
         this.state.fetching = true;
         this.getWishList(this.state.page);
         window.onscroll = () => {
-            if(document.body.scrollHeight - document.body.clientHeight - document.body.scrollTop < 1) {
+            if(document.body.scrollHeight - document.body.clientHeight - document.body.scrollTop == 0) {
                 console.log('bottom');
                 this.state.fetching = true;
                 this.getWishList(this.state.page+1);

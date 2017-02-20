@@ -23,7 +23,7 @@ export default class Wish extends React.Component {
             <MuiThemeProvider>
             <Card style={this.style}>
                 <CardHeader
-                    title={`${this.props.wish_user_name} ${this.props.wish_user_gender}`}
+                    title={`${this.props.wish_user_name} ${this.props.wish_user_gender == 1 ? '男' : '女'}`}
                     subtitle={`发布时间 ${this.props.wish_pub_date}   截止时间 ${this.props.wish_deadline}`}
                 />
                 <CardText style={{fontSize: '3vh'}}>
