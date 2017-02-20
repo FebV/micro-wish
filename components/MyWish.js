@@ -42,8 +42,7 @@ export default class MyWish extends React.Component {
         const pubWishes = this.state.myPub.map((ele, idx) => {
             console.log(idx);
             return (
-                <div>
-                    我发布的
+                <div key={ele.wish_id}>
                 <Card key={ele.wish_id} >
                     <CardHeader
                     title={`心愿状态 ${ele.wish_statue}  ${ele.wish_pub_date}-${ele.wish_deadline}`}
@@ -60,11 +59,11 @@ export default class MyWish extends React.Component {
                 </div>
             );
         });
+        pubWishes = <div>我发布的<br />{pubWishes}</div>;
 
         const acceptWishes = this.state.myAccept.map(ele => {
             return (
-                <div>
-                    我接受的
+                <div key={ele.wish_id}>
                 <Card key={ele.wish_id} >
                     <CardHeader
                     title={`${ele.wish_pub_date}-${ele.wish_deadline}`}
@@ -78,6 +77,9 @@ export default class MyWish extends React.Component {
                 </div>
             );
         });
+
+        acceptWishes = <div>我接受的<br />{acceptWishes}</div>;
+
 
         return (
         <MuiThemeProvider>
