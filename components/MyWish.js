@@ -52,12 +52,17 @@ export default class MyWish extends React.Component {
         let pubWishes = this.state.myPub.map((ele, idx) => {
             console.log(idx);
             const subtitle = ele.wish_status == 1 ? `接收者${ele.wish_accept_user_name} ${ele.wish_accept_date} ${ele.wish_accept_tel}` : '';
+            let status = '暂未接受';
+            if(ele.wish_status == 1)
+                status = '已经接受';
+            if(ele.wish_status == 2)
+                status = '已经过期';
             return (
                 <div key={ele.wish_id}>
                 <Card key={ele.wish_id} >
                     <CardHeader
                     //title={`心愿状态 ${ele.wish_status == 0 ? '暂未接受' : '已经接受' }  ${ele.wish_pub_date} ~ ${ele.wish_deadline}`}
-                    title={`心愿状态 : ${ele.wish_status == 0 ? '暂未接受' : '已经接受' } `}
+                    title={`心愿状态 : ${status} `}
                     subtitle={subtitle}
                     children={`${ele.wish_pub_date} ~ ${ele.wish_deadline}`}
                     />
