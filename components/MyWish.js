@@ -17,7 +17,7 @@ export default class MyWish extends React.Component {
         })
             .then(res => res.json())
             .then(res => {
-                if(Array.isArray(res)) {
+                if(res.status == 200) {
                     this.setState({myPub: res});
                     console.log(res);
                 }
