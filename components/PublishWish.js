@@ -77,6 +77,7 @@ export default class PublishWish extends React.Component {
             open={this.props.open}
             modal={false}
             onRequestClose={this.props.handleClose}
+            autoScrollBodyContent={true}
         >
             <DatePicker
                 defaultDate={this.state.currentTime}

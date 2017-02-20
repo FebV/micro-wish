@@ -20,7 +20,15 @@ export default class MyWish extends React.Component {
             .then(res => {
                 if(res.status == 200) {
                     this.setState({myPub: res.data});
-                    console.log(res);
+                }
+            });
+        fetch(baseUrl+'/user/wish_accept?head=0&rows=10', {
+            credentials: 'include',
+        })
+            .then(res => res.json())
+            .then(res => {
+                if(res.status == 200) {
+                    this.setState({myAccept: res.data});
                 }
             });
     }
@@ -32,6 +40,7 @@ export default class MyWish extends React.Component {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: encodeURIComponent(`wish_id=${id}`),
+            credentials: 'include',
         })
             .then(res => res.text())
             .then(res => {alert(res)});
@@ -89,6 +98,7 @@ export default class MyWish extends React.Component {
             open={this.props.open}
             modal={false}
             onRequestClose={this.props.handleClose}
+            autoScrollBodyContent={true}
         >
             {pubWishes}
             {acceptWishes}
