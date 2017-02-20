@@ -53,7 +53,7 @@ export default class MyWish extends React.Component {
                     {ele.wish_detail}
                     </CardText>
                     <CardActions>
-                        <RaisedButton onClick={this.handleDelete.apply(this, ele.wish_id)} primary={true} label="删除心愿"/>
+                        <RaisedButton onClick={() => this.handleDelete(ele.wish_id)} primary={true} label="删除心愿"/>
                     </CardActions>
                 </Card>
                 <br />
