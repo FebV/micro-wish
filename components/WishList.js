@@ -24,7 +24,9 @@ export default class WishLish extends React.Component {
         window.onscroll = () => {
             if(document.body.scrollHeight - document.body.clientHeight - document.body.scrollTop < 1) {
                 console.log('bottom');
-                this.state.fetching = true;
+                // this.state.fetching = true;
+                if(this.state.fetching == true)
+                    return;
                 this.getWishList(this.state.page+1);
             }
         }
@@ -33,6 +35,7 @@ export default class WishLish extends React.Component {
     getWishList(page) {
         let head = 0 + 10 * page;
         let rows = 10;
+        this.state.fetching == true;
         fetch(baseUrl+`/wish/list?head=${head}&rows=${rows}`, {
         // fetch(baseUrl+'/mock/list.json', {
             credentials: 'include'
@@ -42,7 +45,7 @@ export default class WishLish extends React.Component {
                 if(this.state.fetching == true) {
                     console.log(`fetch true`);
                     this.setState({page: this.state.page + 1});
-                    this.setState({fetching: false});
+                    this.state.fetching = false;
                 }
                 else {
                     return;
