@@ -13,8 +13,8 @@ export default class MyWish extends React.Component {
             myPub: [],
             myAccept: [],
         }
-        // fetch(baseUrl+'/user/wish_pub?head=0&rows=100', {
-        fetch(baseUrl+'/mock/mypub.json', {
+        fetch(baseUrl+'/user/wish_pub?head=0&rows=100', {
+        // fetch(baseUrl+'/mock/mypub.json', {
             credentials: 'include',
         })
             .then(res => res.json())
