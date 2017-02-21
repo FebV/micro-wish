@@ -62,6 +62,9 @@ export default class WishLish extends React.Component {
                         handleAccept={this.handleAccept.bind(this)}
                     />))});
                 }
+                else if(res.status == 300) {
+                    window.onscroll = null;
+                }
             });
     }
 
@@ -101,7 +104,7 @@ class AcceptDialog extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            accepter_tel: null,
+            accept_tel: null,
             accept_user_show: 1,
             wish_id: null,
             if_tel_change: 1,
@@ -109,7 +112,7 @@ class AcceptDialog extends React.Component {
     }
 
     handleTel(e, val) {
-        this.setState({accepter_tel: val});
+        this.setState({accept_tel: val});
     }
 
     handleCheck(e, val) {
