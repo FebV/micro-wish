@@ -13,8 +13,8 @@ export default class MyWish extends React.Component {
             myPub: [],
             myAccept: [],
         }
-        fetch(baseUrl+'/user/wish_pub?head=0&rows=100', {
-        // fetch(baseUrl+'/mock/mypub.json', {
+        // fetch(baseUrl+'/user/wish_pub?head=0&rows=100', {
+        fetch(baseUrl+'/mock/mypub.json', {
             credentials: 'include',
         })
             .then(res => res.json())
@@ -35,12 +35,13 @@ export default class MyWish extends React.Component {
     }
 
     handleDelete(id) {
+        console.log(id);
         fetch(`${baseUrl}/wish/delete`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: encodeURIComponent(`wish_id=${id}`),
+            body: `wish_id=${id}`,
             credentials: 'include',
         })
             .then(res => res.text())
