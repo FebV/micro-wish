@@ -35,6 +35,8 @@ export default class WishLish extends React.Component {
     getWishList(page) {
         let head = 0 + 10 * page;
         let rows = 10;
+        if (this.state.fetching == true)
+            return;
         this.state.fetching == true;
         fetch(baseUrl+`/wish/list?head=${head}&rows=${rows}`, {
         // fetch(baseUrl+'/mock/list.json', {
