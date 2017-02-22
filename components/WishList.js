@@ -36,8 +36,8 @@ export default class WishLish extends React.Component {
         console.log(page);
         if (this.state.fetching == false)
             return;
-        // fetch(baseUrl+`/wish/list?head=${head}&rows=${rows}`, {
-        fetch(baseUrl+'/mock/list.json', {
+        fetch(baseUrl+`/wish/list?head=${head}&rows=${rows}`, {
+        // fetch(baseUrl+'/mock/list.json', {
             credentials: 'include'
         })
             .then(res => res.json())
