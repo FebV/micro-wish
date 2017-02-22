@@ -80,7 +80,7 @@ export default class Title extends React.Component{
     }
 }
 
-let IndexLogo = () => <img height="60%" src="./static/img/index.png" />;
+let IndexLogo = () => <a href="/"><img height="60%" src="./static/img/index.png" /></a>;
 class PublishButton extends React.Component {
     constructor(props) {
         super(props);
