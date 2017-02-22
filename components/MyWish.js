@@ -28,8 +28,8 @@ export default class MyWish extends React.Component {
                     this.setState({myPub: res.data});
                 }
             });
-        // fetch(`${baseUrl}/mock/myaccept.json`, {
-        fetch(baseUrl+'/user/wish_accept?head=0&rows=100', {
+        fetch(`${baseUrl}/mock/myaccept.json`, {
+        // fetch(baseUrl+'/user/wish_accept?head=0&rows=100', {
             credentials: 'include',
         })
             .then(res => res.json())
@@ -59,20 +59,22 @@ export default class MyWish extends React.Component {
     render() {
 
         let pubWishes = this.state.myPub.map((ele, idx) => {
-            const subtitle = ele.wish_status == 1 ? `接收者${ele.wish_accept_user_name} ${ele.wish_accept_date} ${ele.wish_accept_tel}` : '';
-            let status = '暂未接受';
+            const subtitle = ele.wish_status == 1 ? `接收者: ${ele.wish_accept_user} ${ele.wish_accept_tel}` : '';
+            let status = '暂未被接受';
             if(ele.wish_status == 1)
-                status = '已经接受';
+                status = '有人接受！';
             if(ele.wish_status == 2)
                 status = '已经过期';
+            
+            let acceptDate = ele.wish_status == 1 ?  `接收日期: ${ele.wish_accept_date}` : `截止到: ${ele.wish_deadline}`;
             return (
                 <div key={ele.wish_id}>
                 <Card key={ele.wish_id} >
                     <CardHeader
                     //title={`心愿状态 ${ele.wish_status == 0 ? '暂未接受' : '已经接受' }  ${ele.wish_pub_date} ~ ${ele.wish_deadline}`}
-                    title={`心愿状态 : ${status} `}
-                    subtitle={subtitle}
-                    children={`${ele.wish_pub_date} ~ ${ele.wish_deadline}`}
+                    title={`${status} ${subtitle} `}
+                    subtitle={`${acceptDate}`}
+                    children={``}
                     />
                     <CardText style={{fontSize: '3vh'}}>
                     {ele.wish_detail}
@@ -92,8 +94,8 @@ export default class MyWish extends React.Component {
                 <div key={ele.wish_id}>
                 <Card key={ele.wish_id} >
                     <CardHeader
-                    title={`${ele.wish_pub_date} ~ ${ele.wish_deadline}`}
-                    subtitle={`${ele.wish_user_name} ${ele.wish_user_gender == 1 ? '男' : '女'} ${ele.wish_user_tel}`}
+                    title={`${ele.wish_user_name} ${ele.wish_user_gender == 1 ? '男' : '女'} ${ele.wish_user_tel}`}
+                    subtitle={`截止到 ${ele.wish_deadline}`}
                     avatar={ele.wish_user_headimgurl}
                     />
                     <CardText style={{fontSize: '3vh'}}>
