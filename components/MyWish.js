@@ -18,8 +18,8 @@ export default class MyWish extends React.Component {
     }
 
     loadData() {
-        fetch(baseUrl+'/user/wish_pub?head=0&rows=100', {
-        // fetch(baseUrl+'/mock/mypub.json', {
+        // fetch(baseUrl+'/user/wish_pub?head=0&rows=100', {
+        fetch(baseUrl+'/mock/mypub.json', {
             credentials: 'include',
         })
             .then(res => res.json())
@@ -93,7 +93,7 @@ export default class MyWish extends React.Component {
                 <Card key={ele.wish_id} >
                     <CardHeader
                     title={`${ele.wish_pub_date} ~ ${ele.wish_deadline}`}
-                    subtitle={`${ele.wish_user_name} ${ele.wish_user_gender == 1 ? '男' : '女'} ${ele.wish_accept_date} ${ele.wish_accept_tel}`}
+                    subtitle={`${ele.wish_user_name} ${ele.wish_user_gender == 1 ? '男' : '女'} ${ele.wish_user_tel}`}
                     avatar={ele.wish_user_headimgurl}
                     />
                     <CardText style={{fontSize: '3vh'}}>
