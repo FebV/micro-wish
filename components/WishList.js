@@ -143,6 +143,7 @@ class AcceptDialog extends React.Component {
                     const msg = res == 0 ? '接受失败' : `接受成功, 发布者的联系方式是${res.data}`;
                     alert(msg);
                     dispatchEvent(new Event('refreshMyWish'));
+                    this.props.handleClose();
                 }
                 else{
                     alert('网络状况不良，接受失败')
