@@ -35,7 +35,6 @@ export default class MyWish extends React.Component {
     }
 
     handleDelete(id) {
-        console.log(id);
         fetch(`${baseUrl}/wish/delete`, {
             method: 'POST',
             headers: {
@@ -51,7 +50,6 @@ export default class MyWish extends React.Component {
     render() {
 
         let pubWishes = this.state.myPub.map((ele, idx) => {
-            console.log(idx);
             const subtitle = ele.wish_status == 1 ? `接收者${ele.wish_accept_user_name} ${ele.wish_accept_date} ${ele.wish_accept_tel}` : '';
             let status = '暂未接受';
             if(ele.wish_status == 1)

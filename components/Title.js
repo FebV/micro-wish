@@ -53,7 +53,6 @@ export default class Title extends React.Component{
 
     handleMyWishOpen() {
         this.setState({myWishOpen: true});
-        console.log('open');
     }
 
     handleMyWishClose() {

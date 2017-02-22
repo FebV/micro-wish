@@ -65,7 +65,6 @@ export default class PublishWish extends React.Component {
             credentials: 'include',
             body: searchParams,
         })
-        console.log(this.state);
     }
 
     render() {

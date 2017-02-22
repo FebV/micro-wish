@@ -17,16 +17,14 @@ export default class WishLish extends React.Component {
             dialogOpen: false,
             acceptWishId: null,
             page: 0,
-            fetching: false,
+            fetching: true,
         }
         this.state.fetching = true;
         this.getWishList(this.state.page);
         window.onscroll = () => {
-            if(document.body.scrollHeight - document.body.clientHeight - document.body.scrollTop < 1) {
-                console.log('bottom');
-                // this.state.fetching = true;
-                if(this.state.fetching == true)
-                    return;
+            let distance = Math.floor(document.body.scrollHeight - document.body.clientHeight - document.body.scrollTop);
+            if(distance == -1) {
+                this.state.fetching = true;
                 this.getWishList(this.state.page+1);
             }
         }
@@ -35,9 +33,8 @@ export default class WishLish extends React.Component {
     getWishList(page) {
         let head = 0 + 10 * page;
         let rows = 10;
-        if (this.state.fetching == true)
+        if (this.state.fetching == false)
             return;
-        this.state.fetching == true;
         fetch(baseUrl+`/wish/list?head=${head}&rows=${rows}`, {
         // fetch(baseUrl+'/mock/list.json', {
             credentials: 'include'
@@ -147,7 +144,6 @@ class AcceptDialog extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         return (
         <MuiThemeProvider>
         <Dialog
