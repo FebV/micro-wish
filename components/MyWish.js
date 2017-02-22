@@ -28,8 +28,8 @@ export default class MyWish extends React.Component {
                     this.setState({myPub: res.data});
                 }
             });
-        fetch(`${baseUrl}/mock/myaccept.json`, {
-        // fetch(baseUrl+'/user/wish_accept?head=0&rows=100', {
+        // fetch(`${baseUrl}/mock/myaccept.json`, {
+        fetch(baseUrl+'/user/wish_accept?head=0&rows=100', {
             credentials: 'include',
         })
             .then(res => res.json())
