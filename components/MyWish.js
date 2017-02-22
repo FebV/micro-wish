@@ -49,10 +49,12 @@ export default class MyWish extends React.Component {
             body: `wish_id=${id}`,
             credentials: 'include',
         })
-            .then(res => res.text())
+            .then(res => res.json())
             .then(res => {
-                alert(res);
-                dispatchEvent(new Event('refreshMyWish'));
+                if(res.status == 200) {
+                    alert('删除成功');
+                    dispatchEvent(new Event('refreshMyWish'));
+                }
 });
     }
 
