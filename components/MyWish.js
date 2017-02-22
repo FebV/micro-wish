@@ -2,7 +2,7 @@ import React from 'react';
 import {baseUrl} from '../config/config';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Dialog from 'material-ui/Dialog';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import {Card, CardActions, CardHeader, CardText, CardMedia, CardTitle} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
@@ -28,7 +28,8 @@ export default class MyWish extends React.Component {
                     this.setState({myPub: res.data});
                 }
             });
-        fetch(baseUrl+'/user/wish_accept?head=0&rows=100', {
+        fetch(`${baseUrl}/mock/myaccept.json`, {
+        // fetch(baseUrl+'/user/wish_accept?head=0&rows=100', {
             credentials: 'include',
         })
             .then(res => res.json())
@@ -49,7 +50,10 @@ export default class MyWish extends React.Component {
             credentials: 'include',
         })
             .then(res => res.text())
-            .then(res => {alert(res)});
+            .then(res => {
+                alert(res);
+                dispatchEvent(new Event('refreshMyWish'));
+});
     }
 
     render() {
@@ -88,8 +92,9 @@ export default class MyWish extends React.Component {
                 <div key={ele.wish_id}>
                 <Card key={ele.wish_id} >
                     <CardHeader
-                    title={`${ele.wish_pub_date}-${ele.wish_deadline}`}
-                    subtitle={`${ele.wish_accept_user_name} ${ele.wish_user_gender} ${ele.wish_accept_date} ${ele.wish_accept_tel}`}
+                    title={`${ele.wish_pub_date} ~ ${ele.wish_deadline}`}
+                    subtitle={`${ele.wish_user_name} ${ele.wish_user_gender == 1 ? '男' : '女'} ${ele.wish_accept_date} ${ele.wish_accept_tel}`}
+                    avatar={ele.wish_user_headimgurl}
                     />
                     <CardText style={{fontSize: '3vh'}}>
                     {ele.wish_detail}
