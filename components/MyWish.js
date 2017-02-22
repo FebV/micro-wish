@@ -13,6 +13,11 @@ export default class MyWish extends React.Component {
             myPub: [],
             myAccept: [],
         }
+        this.loadData();
+        window.addEventListener('refreshMyWish', () => this.loadData());
+    }
+
+    loadData() {
         fetch(baseUrl+'/user/wish_pub?head=0&rows=100', {
         // fetch(baseUrl+'/mock/mypub.json', {
             credentials: 'include',
