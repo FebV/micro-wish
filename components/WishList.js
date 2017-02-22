@@ -25,7 +25,7 @@ export default class WishLish extends React.Component {
             let distance = Math.floor(document.body.scrollHeight - document.body.clientHeight - document.body.scrollTop);
             if(distance == -1) {
                 this.state.fetching = true;
-                this.getWishList(this.state.page+1);
+                this.getWishList(this.state.page);
             }
         }
     }
@@ -33,10 +33,11 @@ export default class WishLish extends React.Component {
     getWishList(page) {
         let head = 0 + 10 * page;
         let rows = 10;
+        console.log(page);
         if (this.state.fetching == false)
             return;
-        fetch(baseUrl+`/wish/list?head=${head}&rows=${rows}`, {
-        // fetch(baseUrl+'/mock/list.json', {
+        // fetch(baseUrl+`/wish/list?head=${head}&rows=${rows}`, {
+        fetch(baseUrl+'/mock/list.json', {
             credentials: 'include'
         })
             .then(res => res.json())
@@ -140,6 +141,7 @@ class AcceptDialog extends React.Component {
             .then(res => {
                 const msg = res == 0 ? '接收失败' : `接受成功, 发布者的联系方式是${res}`;
                 alert(msg);
+                location.reload();
             });
     }
 
