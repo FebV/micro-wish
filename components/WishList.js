@@ -140,7 +140,7 @@ class AcceptDialog extends React.Component {
             .then(res => res.json())
             .then(res => {
                 if(res.statue == 200) {
-                    const msg = res == 0 ? '接收失败' : `接受成功, 发布者的联系方式是${res.data}`;
+                    const msg = res == 0 ? '接受失败' : `接受成功, 发布者的联系方式是${res.data}`;
                     alert(msg);
                     dispatchEvent(new Event('refreshMyWish'));
                 }
