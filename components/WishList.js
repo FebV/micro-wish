@@ -88,7 +88,7 @@ export default class WishLish extends React.Component {
     render() {
         return (
         <div style={{width: '100%', paddingTop:'10%', display: 'flex', justifyContent: 'center'}}>
-            <div style={{width: '60%'}}>
+            <div style={{width: '80%'}}>
                 {this.state.wishList.map(ele => ele)}
             </div>
             <AcceptDialog

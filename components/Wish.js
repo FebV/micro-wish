@@ -9,8 +9,8 @@ export default class Wish extends React.Component {
         this.style = {
             width: '100%',
             fontFamily: 'Microsoft Yahei',
-            margin: '30px',
             opacity: 0.9,
+            marginTop: '20px',
         }
         this.state = {
             wish_id: this.props.wish_id,
