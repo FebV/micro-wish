@@ -3,6 +3,7 @@ rewrite for a dumber
   
 using react  
 using material-ui  
+using fetch api  
 
 ## build  
 npm install  
